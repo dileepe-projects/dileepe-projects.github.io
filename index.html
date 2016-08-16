@@ -40,11 +40,22 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <h1>TODO <img src="./images/todo.png" height="42" width="42"></h1>
-                <!--<input type="text" placeholder = "Add a task...." class="form-control todoinput"  ng-model = "todotext" my-enter="addTodoItem()"/>-->
+                <!--<input type="text" placeholder = "Add a task...." class="form-control todoinput"  ng-model = "todotext" my-enter="addTodoItem()"/>-->                      
                 <textarea type="text" placeholder = "Add a task...." class="form-control todoinput" ng-model = "todotext"></textarea>
-               <button class = "btn btn-primary btn-add" ng-click = "addTodoItem()" data-toggle="tooltip" title="ADD!"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                <br/>
+                <button class = "btn btn-success btn-add" ng-click = "addTodoItem()" data-toggle="tooltip" title="ADD!">ADD
+                <i class="fa fa-plus-square" aria-hidden="true"></i></button>               
             </div>
+            <br/>
             <div class="col-md-4">
+              <div class="browser-support-container">
+              <div class="panel panel-primary">
+              <div class="panel-heading">Browser Support</div>
+              <div class="panel-body">Desktop Notification: <span ng-bind-html="desktopNotification"></span></div>
+              </div>
+              </div>
+      
+            </div>
                
             </div>
           </div>
