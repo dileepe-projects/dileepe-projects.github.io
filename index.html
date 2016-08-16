@@ -11,13 +11,17 @@
     <title>TODO App</title>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
     <!-- Google fonts css -->
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet"/>
+
 
     <!-- Custome CSS -->
-    <link rel="stylesheet" href="./css/custom.css">
+    <link rel="stylesheet" href="./css/custom.css"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"/>
+
 
 
   
@@ -36,8 +40,9 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <h1>TODO <img src="./images/todo.png" height="42" width="42"></h1>
-                <input type="text" placeholder = "Add a task...." class="form-control todoinput"  ng-model = "todotext" my-enter="addTodoItem()"/>
-                <!--<textarea type="text" placeholder = "Add a task...." class="form-control todoinput"></textarea>-->
+                <!--<input type="text" placeholder = "Add a task...." class="form-control todoinput"  ng-model = "todotext" my-enter="addTodoItem()"/>-->
+                <textarea type="text" placeholder = "Add a task...." class="form-control todoinput" ng-model = "todotext"></textarea>
+                <button class = "btn btn-primary btn-add" ng-click = "addTodoItem()">Add <i class="fa fa-plus-square" aria-hidden="true"></i></button>
             </div>
             <div class="col-md-4"></div>
           </div>
@@ -53,13 +58,13 @@
                         <option value="age">Oldest</option>
                       </select>
                       <ul id="todo_ul">
-                        <li ng-repeat="todoitem in todoitems | filter:query | orderBy: orderList">
+                        <li ng-repeat="todoitem in todoitems | filter:query | orderBy: orderList" class="ng-cloak">
                           {{todoitem.text}}
                           <br/>
-                          <div class="right top">{{todoitem.age}}</div>
+                          <div class="ng-cloak right top">{{todoitem.age}}</div>
                         </li>
                       </ul>
-                      <span>Total TODO items: {{todoitems.length}}</span>
+                      <span class="ng-cloak">Total TODO items: {{todoitems.length}}</span>
                 </div>
             </div>
             <div class="col-md-4"></div>
@@ -75,6 +80,7 @@
 
     <!-- Angular JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-sanitize.js"></script>
     
     <!-- Custome JS -->
     <script Src="./js/todo-controller.js"></script>
