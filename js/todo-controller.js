@@ -1,4 +1,4 @@
-var todo = angular.module('todoapp', []);
+var todo = angular.module('todoapp', ['ngSanitize']);
 
 
 todo.directive('myEnter', function () {
@@ -17,6 +17,37 @@ todo.directive('myEnter', function () {
 
 
 todo.controller('mainController', function($scope){
+
+    
+   
+    // Let's check if the browser supports notifications
+    if (!("Notification" in window)) {
+    $scope.desktopNotification = "<span class='label label-danger'> Not Supported </span>";
+    }
+
+    else if(Notification.permission === "granted") {
+    $scope.desktopNotification = "<span class='label label-success'> Granted </span>";
+    }
+
+    else if(Notification.permission === "denied") {
+    $scope.desktopNotification = "<span class='label label-danger'> Denied </span>" + "<span class='badge' data-toggle='tooltip' title='enable in settings'>?</span>";
+    }
+
+    else if (Notification.permission !== 'denied') {
+    Notification.requestPermission(function (permission) {
+      // If the user accepts, let's create a notification
+      if (permission === "granted") {
+        $scope.desktopNotification = "<span class='label label-success'> Granted </span>";
+      }
+
+      if (permission === "denied") {
+            $scope.desktopNotification = "<span class='label label-danger'> Denied </span>" + "<span class='badge' data-toggle='tooltip' title='enable in settings'>?</span>";;
+      }
+
+    });
+    }
+
+    console.log($scope.desktopNotification);
 
 	$scope.todoitems = [];
 
