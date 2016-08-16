@@ -30,6 +30,7 @@ todo.controller('mainController', function($scope){
 		var text = $scope.todotext;
 		var age = myDate.getHours() + ":" + myDate.getMinutes() + ":" + myDate.getSeconds();		
         $scope.todoitems.push({"text": text, "age": age});
+        $scope.todotext = "";
     }
 
 	};
