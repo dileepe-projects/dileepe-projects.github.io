@@ -67,10 +67,11 @@ li {
 
 
 .right {
-      float: right;
-    position: relative;
-    font-size: 10px;
+  float: right;
+  position: relative;
+  font-size: 10px;
 }
+
 
 
 #todo span {
@@ -92,7 +93,7 @@ li {
 .btn-add {
 
   margin-top: 4px;
-  margin-left: 300px;
+  margin-left: 327px;
 }
 
 ::-webkit-input-placeholder {
