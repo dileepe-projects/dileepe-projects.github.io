@@ -47,6 +47,10 @@ h1 {
     color:green;
 }
 
+.label-warning.false {
+    background-color: #5cb85c;
+}
+
 .todoOptions{
 	    margin-left: 260px;
         margin-top: -40px;

@@ -62,9 +62,8 @@
              <div class = "todoOptions">
                 <i ng-hide = "!notificationsAvailable"  class="fa fa-clock-o addReminder {{x.todoReminded}}"  aria-hidden="true" data-toggle="modal" data-target="#reminderModal" ng-click="passReminder($index)"></i> <i class="fa fa-times-circle removeTask" aria-hidden="true" ng-click="removetask($index)"></i>
               </div>
-             <span ng-bind="x.todoText" reminder = "{{x.todoReminder}}"></span>             
-              
-             <span ng-hide = "!notificationsAvailable" style="font-size: 11px;">Remind me at: {{x.todoReminder}}</span>
+             <span ng-bind="x.todoText" reminder = "{{x.todoReminder}}"></span><br/>               
+             <span ng-hide = "!notificationsAvailable" class="label label-warning {{x.todoReminded}}">Remind me at: {{x.todoReminder}}</span><br/>
         </div>
         
 </div>
