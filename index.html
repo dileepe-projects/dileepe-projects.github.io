@@ -1,141 +1,106 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app = "todoapp">
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="./images/favicon.png" />
+        <title>TODO App</title>
+        
+        <!-- Bootstrap Core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
-<head >
+        <!-- Google fonts css -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poiret+One" >
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Denk+One">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="./images/favicon.png" />
-
-    <title>TODO App</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-
-    <!-- Google fonts css -->
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet"/>
-
-
-    <!-- Custome CSS -->
-    <link rel="stylesheet" href="./css/custom.css"/>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"/>
+        <!-- font-awesome css -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"/>
 
 
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="./css/custom.css"/>      
 
-  
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
+        
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>        
+        <script src="./js/todo-controller.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body data-ng-controller = "mainController">
-    <div class = "TODO-container">
-             <!--   <br/>
-             <button ng-click="stopInterval()">STOP</button> -->
+<body ng-app="todoapp" ng-controller="todoController">
+<div class = "container">
+<h1>TODO <img src="./images/todo.png" height="42" width="42"></h1>
 
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <h1>TODO <img src="./images/todo.png" height="42" width="42"></h1>
-                <!--<input type="text" placeholder = "Add a task...." class="form-control todoinput"  ng-model = "todotext" my-enter="addTodoItem()"/>-->                      
-                <textarea type="text" placeholder = "Add a task...." class="form-control todoinput" ng-model = "todotext"></textarea>
-                <br/>
-                <button class = "btn btn-success btn-add" ng-click = "addTodoItem()" data-toggle="tooltip" title="ADD!">ADD
-                <i class="fa fa-plus-square" aria-hidden="true"></i></button>               
-            </div>
-            <br/>
-            <div class="col-md-4">
-              <div class="browser-support-container">
-              <div class="panel panel-primary">
-              <div class="panel-heading"><i class="fa fa-globe" aria-hidden="true"></i> Browser Support</div>
-              <div class="panel-body">Desktop Notification: <label class = {{labelClass}} ng-bind ="desktopNotification"></label></div>
+<form>
+    <!--<input class="form-control todoinput" type="text" ng-model="todoInput" placeholder="Add a task...."> <br/> -->
+    <textarea type="text" placeholder = "Add a task...." class="form-control todoinput" ng-model = "todoInput"></textarea> <br/>
+    <p class = "text-center">
+    <button ng-click="todoAdd()" class = "btn btn-success">Add New <i class="fa fa-plus-square" aria-hidden="true"></i></button>  
+
+    <!--<button class = "btn btn-danger" ng-click="remove()">Remove Selected</button>-->  
+    </p>
+    <p class = "text-center">
+    <span class = "todoCount">Total Todo Items:  </span><span class="badge" ng-bind = "todoList.length"></span>
+    </p>
+
+</form>
+
+
+<br>
+<div class = "container todolist">
+        <div ng-repeat="x in todoList" class="todotext">
+             <span ng-bind="x.todoText" reminder = "{{x.todoReminder}}"></span>             
+              <div class = "todoOptions">
+                <i class="fa fa-clock-o addReminder" aria-hidden="true" data-toggle="modal" data-target="#reminderModal" ng-click="passReminder($index)"></i> <i class="fa fa-times-circle removeTask" aria-hidden="true" ng-click="removetask($index)"></i>
               </div>
-              </div>
-      
-            </div>
-               
-            </div>
-          </div>
-          <br/>
-  
-          <div class="row" ng-hide="todoitems.length==0">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-               <div id="todo">
-                      <input type="text" id="query" ng-model="query" placeholder = "search...." />
-                      <select ng-model="orderList">
-                        <option value="-age">Newest</option>
-                        <option value="age">Oldest</option>
-                      </select>
-                      <ul id="todo_ul">
-                        <li ng-repeat="todoitem in todoitems | filter:query | orderBy: orderList" class="ng-cloak">
-                          {{todoitem.text}}
-                          <br/>
-                          <div class="ng-cloak right top">{{todoitem.age}}</div>
-                          <i class="fa fa-clock-o remainder-off" aria-hidden="true" remainder={{todoitem.reminder}} data-toggle="modal" data-target="#remainderModal"></i>
-                        </li>
+             <span style="font-size: 11px;">Remind me on: {{x.todoReminder}}</span>
+        </div>
+        
+</div>
+<br/>
+  <p class = "text-center browserOptions">
+  <span class = "text-muted"><b><i class="fa fa-globe" aria-hidden="true"></i> Browser Support<br/></b></span>
+  Desktop Notification: <span ng-bind = "desktopNotification"></span><span class="{{iconClass}}"></span>
+  <!--IndexedDB: <span class="glyphicon glyphicon-ok"></span>  -->
+  </p>
+</div>
 
-                      </ul>
-                      <span class="ng-cloak">Total TODO items: {{todoitems.length}}</span>
-
-                </div>
-            </div>
-            <div class="col-md-4">
-            
-            </div>
-          </div>
-    </div>
-
-    <!-- Modal -->
-<div id="remainderModal" class="modal fade" role="dialog">
+<!-- Modal -->
+<div id="reminderModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog">
 
     <!-- Modal content-->
-    <div class="modal-content timemodel">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Select time to remind</h4>
-      </div>
+    <div class="modal-content">      
       <div class="modal-body">
-            <div class="form-inline">
-              <div class="form-group" style="padding: 10px;">
-            <select name="repeatSelect" id="repeatSelect" class = "form-control" ng-model="selectedTime">
+      
+      <div style="display:none;">
+          <span ng-model = "currentSNO" ng-bind = "currentSNO"></span>               
+      </div>
+       <p class = "text-center">
+        <select class = "form-control" ng-model="selectedTime" style="width: 100px; margin:auto;">
                <option ng-repeat="option in availableOptions" value="{{option.id}}">{{option.name}}</option>
            </select>
-           <button class = "btn btn-primary" ng-click="setreminder()">Set Reminder</button>
-         </div>
-         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+           <br/>
+           <button class = "btn btn-primary" ng-click = "addReminder()" data-dismiss = {{closemodal}}>Set Reminder</button>
+            <button class = "btn btn-danger" data-dismiss="modal">Cancel</button>
+           </p>
+      </div>     
     </div>
 
   </div>
 </div>
-    
-   
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- Angular JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-sanitize.js"></script>
-    
-    <!-- Custom JS -->
-    <script src="./js/todo-controller.js"></script>
-   
 
 
 </body>
-
 </html>
+
