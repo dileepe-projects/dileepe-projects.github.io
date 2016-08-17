@@ -1,3 +1,6 @@
+
+
+
 h1 {
   	color: #ffa400;
     
@@ -111,3 +114,8 @@ li {
     margin: auto;
 }
 
+i.fa.fa-clock-o.remainder-off {
+    float: right;
+    margin-top: -5px;
+    color:red;
+}

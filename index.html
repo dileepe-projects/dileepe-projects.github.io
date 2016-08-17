@@ -36,6 +36,9 @@
 
 <body data-ng-controller = "mainController">
     <div class = "TODO-container">
+             <!--   <br/>
+             <button ng-click="stopInterval()">STOP</button> -->
+
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
@@ -50,8 +53,8 @@
             <div class="col-md-4">
               <div class="browser-support-container">
               <div class="panel panel-primary">
-              <div class="panel-heading">Browser Support</div>
-              <div class="panel-body">Desktop Notification: <span ng-bind-html="desktopNotification"></span></div>
+              <div class="panel-heading"><i class="fa fa-globe" aria-hidden="true"></i> Browser Support</div>
+              <div class="panel-body">Desktop Notification: <label class = {{labelClass}} ng-bind ="desktopNotification"></label></div>
               </div>
               </div>
       
@@ -60,8 +63,8 @@
             </div>
           </div>
           <br/>
-
-          <div class="row">
+  
+          <div class="row" ng-hide="todoitems.length==0">
             <div class="col-md-4"></div>
             <div class="col-md-4">
                <div id="todo">
@@ -75,14 +78,47 @@
                           {{todoitem.text}}
                           <br/>
                           <div class="ng-cloak right top">{{todoitem.age}}</div>
+                          <i class="fa fa-clock-o remainder-off" aria-hidden="true" remainder={{todoitem.reminder}} data-toggle="modal" data-target="#remainderModal"></i>
                         </li>
+
                       </ul>
                       <span class="ng-cloak">Total TODO items: {{todoitems.length}}</span>
+
                 </div>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-4">
+            
+            </div>
           </div>
     </div>
+
+    <!-- Modal -->
+<div id="remainderModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content timemodel">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Select time to remind</h4>
+      </div>
+      <div class="modal-body">
+            <div class="form-inline">
+              <div class="form-group" style="padding: 10px;">
+            <select name="repeatSelect" id="repeatSelect" class = "form-control" ng-model="selectedTime">
+               <option ng-repeat="option in availableOptions" value="{{option.id}}">{{option.name}}</option>
+           </select>
+           <button class = "btn btn-primary" ng-click="setreminder()">Set Reminder</button>
+         </div>
+         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
     
    
     <!-- jQuery -->
@@ -95,8 +131,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-sanitize.js"></script>
     
-    <!-- Custome JS -->
-    <script Src="./js/todo-controller.js"></script>
+    <!-- Custom JS -->
+    <script src="./js/todo-controller.js"></script>
+   
 
 
 </body>
