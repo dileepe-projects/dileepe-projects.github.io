@@ -4,6 +4,7 @@ var todoapp = angular.module('todoapp', []);
 todoapp.controller('todoController', function($scope, $window, dateFilter, $interval) {
 var promise;
 
+
 //check if desktop notification is available in the current browser
 	if (!("Notification" in window)) {
 	    $scope.desktopNotification = "Not Supported";
