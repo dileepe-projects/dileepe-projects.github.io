@@ -59,11 +59,12 @@
 <br>
 <div class = "container todolist">
         <div ng-repeat="x in todoList" class="todotext">
-             <span ng-bind="x.todoText" reminder = "{{x.todoReminder}}"></span>             
-              <div class = "todoOptions">
-                <i class="fa fa-clock-o addReminder" aria-hidden="true" data-toggle="modal" data-target="#reminderModal" ng-click="passReminder($index)"></i> <i class="fa fa-times-circle removeTask" aria-hidden="true" ng-click="removetask($index)"></i>
+             <div class = "todoOptions">
+                <i ng-hide = "!notificationsAvailable" class="fa fa-clock-o addReminder" aria-hidden="true" data-toggle="modal" data-target="#reminderModal" ng-click="passReminder($index)"></i> <i class="fa fa-times-circle removeTask" aria-hidden="true" ng-click="removetask($index)"></i>
               </div>
-             <span style="font-size: 11px;">Remind me on: {{x.todoReminder}}</span>
+             <span ng-bind="x.todoText" reminder = "{{x.todoReminder}}"></span>             
+              
+             <span ng-hide = "!notificationsAvailable" style="font-size: 11px;">Remind me at: {{x.todoReminder}}</span>
         </div>
         
 </div>
