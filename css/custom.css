@@ -12,12 +12,12 @@ h1 {
 	border-width: 3px;
     border-color: #7f94da;
     height: 60px;   
-    width: 350px;
+   max-width: 330px;
     margin: auto;
 }
 
 .todolist{
-	width: 350px;
+	max-width: 330px;
     margin: auto;
 }
 
