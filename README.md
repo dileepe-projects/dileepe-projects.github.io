@@ -2,4 +2,4 @@
 Angular Todo App with desktop notifications
 
 
-Work in progress...
+Work in progress...last updated 8/17
