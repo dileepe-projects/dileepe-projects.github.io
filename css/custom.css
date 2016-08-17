@@ -43,6 +43,10 @@ h1 {
     color:orange;
 }
 
+.addReminder.false {
+    color:green;
+}
+
 .todoOptions{
 	    margin-left: 260px;
         margin-top: -40px;

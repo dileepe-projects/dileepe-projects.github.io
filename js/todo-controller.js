@@ -54,7 +54,7 @@ var promise;
 
         }
         else {
-        $scope.todoList.push({todoText:$scope.todoInput, todoReminder:'NA', todoReminded: false});        
+        $scope.todoList.push({todoText:$scope.todoInput, todoReminder:'NA', todoReminded: true});        
         $scope.todoInput = "";
     	}
     };    
@@ -68,14 +68,14 @@ var promise;
     	
     	$scope.currentSNO = $index;    	
          var now = new Date();
-    now.setMinutes(now.getMinutes() + 1); //fiveminutes interval to set the reminder
+    now.setMinutes(now.getMinutes() + 2); //twominutes interval to set the reminder
     var tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     tomorrow.setHours(0,0,0,0);
     $scope.availableOptions = [];
     while( now < tomorrow ) {      
       $scope.availableOptions.push({id: dateFilter(now, 'h:mm a'), name: dateFilter(now, 'h:mm a')})          
-      now.setMinutes(now.getMinutes() + 1); //fiveminutes interval to set the reminder (change here also)
+      now.setMinutes(now.getMinutes() + 2); //twominutes interval to set the reminder (change here also)
     }
 
     $scope.selectedTime = $scope.availableOptions[0].name;
@@ -84,6 +84,7 @@ var promise;
     $scope.addReminder = function(){
     	
     	$scope.todoList[$scope.currentSNO].todoReminder = $scope.selectedTime;  
+        $scope.todoList[$scope.currentSNO].todoReminded = false; 
     	$scope.closemodal = "modal";    	
     }
 
