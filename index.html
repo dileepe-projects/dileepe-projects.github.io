@@ -61,9 +61,9 @@
 <div class = "container todolist">
         <div ng-repeat="x in todoList" class="todotext">
              <div class = "todoOptions">
-                <i ng-hide = "!notificationsAvailable"  class="fa fa-clock-o addReminder {{x.todoReminded}}"  aria-hidden="true" data-toggle="modal" data-target="#reminderModal" ng-click="passReminder($index)"></i> <i class="fa fa-times-circle removeTask" aria-hidden="true" ng-click="removetask($index)"></i>
+                <i ng-hide = "!notificationsAvailable"  class="fa fa-clock-o addReminder {{x.todoReminded}}"  aria-hidden="true" data-toggle="modal" data-target="#reminderModal" ng-click="passReminder($index)"></i> <i class="fa fa-times-circle removeTask" aria-hidden="true" ng-click="removetask($index)"></i><i class="fa fa-check-square-o markcomplete {{x.todoCompleted}}" aria-hidden="true" ng-click="completetask($index)"></i>
               </div>
-             <span ng-bind="x.todoText" reminder = "{{x.todoReminder}}"></span><br/>               
+             <span ng-bind="x.todoText" reminder = "{{x.todoReminder}}" todoCompleted="{{x.todoCompleted}}"></span><br/>               
              <span ng-hide = "!notificationsAvailable" class="label label-warning {{x.todoReminded}}">Remind me at: {{x.todoReminder}}</span><br/>
         </div>
         
@@ -90,7 +90,7 @@
        <p class = "text-center">
         <select class = "form-control" ng-model="selectedTime" style="width: 150px; margin:auto;">
                <option ng-repeat="option in availableOptions" value="{{option.id}}">{{option.name}}</option>
-           </select>
+           </select>     
            <br/>
            <button class = "btn btn-primary" ng-click = "addReminder()" data-dismiss = {{closemodal}}>Set Reminder</button>
             <button class = "btn btn-danger" data-dismiss="modal">Cancel</button>
