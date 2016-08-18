@@ -39,12 +39,28 @@ h1 {
     color:red;
 }
 
+.markcomplete:hover {
+    color:green;
+}
+
+.markcomplete.true {
+    color:green;
+}
+
 .addReminder:hover {
     color:orange;
 }
 
 .addReminder.false {
     color:green;
+}
+
+.todotext.true {
+  
+}
+
+span[todoCompleted=true] {
+    text-decoration: line-through;
 }
 
 .label-warning.false {
