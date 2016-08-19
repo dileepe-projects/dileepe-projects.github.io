@@ -134,7 +134,7 @@ todoapp.controller('todoController', function($scope, $window, dateFilter, $inte
     }
 
 //timer that runs and checks reminder at given interval
-if(Notification.permission === "granted") {
+if( "Notification" in window && Notification.permission === "granted") {
 console.log("timer is on!");
 $interval(checkTime, 5000);
 }
