@@ -1,26 +1,57 @@
 var todoapp = angular.module('todoapp', []);
 
 
+
 todoapp.controller('todoController', function($scope, $window, dateFilter, $interval) {
+
+
+
+
+//check if local storage is available
+
+if (!window.localStorage) {
+    $scope.localstorage = "Not Supported ";
+    $scope.storageClass = "glyphicon glyphicon-remove red";    
+    $scope.todoList = []; //initialize todolist as blank
+    }
+
+    else {
+     $scope.localstorage = "Available ";   
+     $scope.storageClass = "glyphicon glyphicon-ok green";
+     var storedtodoList = localStorage.getItem('TODOLIST');
+     if(JSON.parse(storedtodoList)== null)
+     {
+         $scope.todoList = []; //initialize todolist as blank
+     }
+
+     else
+     {
+         $scope.todoList = JSON.parse(storedtodoList); //initialize todolist with data from localstorage
+     }
+
+    }
+
+
+
 
 
 
 //check if desktop notification is available in the current browser
 	if (!("Notification" in window)) {
 	    $scope.desktopNotification = "Not Supported ";
-	    $scope.iconClass = "glyphicon glyphicon-remove red";
+	    $scope.notificationClass = "glyphicon glyphicon-remove red";
         $scope.notificationsAvailable = false;	    
     }
 
     else if(Notification.permission === "granted") {
     $scope.desktopNotification = "Available ";
-    $scope.iconClass = "glyphicon glyphicon-ok green";
+    $scope.notificationClass = "glyphicon glyphicon-ok green";
     $scope.notificationsAvailable = true;
     }
 
     else if(Notification.permission === "denied") {
     $scope.desktopNotification = "Denied by user (change this in browser settings) ";
-    $scope.iconClass = "glyphicon glyphicon-exclamation-sign orange";
+    $scope.notificationClass = "glyphicon glyphicon-exclamation-sign orange";
     $scope.notificationsAvailable = false;
     }
 
@@ -29,13 +60,13 @@ todoapp.controller('todoController', function($scope, $window, dateFilter, $inte
 		     // $window.location.reload(); //reload to see what the user has selected (this is needed in chrome)
 		      if (permission === "granted") {
 		       $scope.desktopNotification = "Available ";
-		       $scope.iconClass = "glyphicon glyphicon-ok green";
+		       $scope.notificationClass = "glyphicon glyphicon-ok green";
                $scope.notificationsAvailable = true;
 		      }
 
 		      if (permission === "denied") {
 		         $scope.desktopNotification = "Denied by user (change this in browser settings) ";
-		    	 $scope.iconClass = "glyphicon glyphicon-exclamation-sign orange";
+		    	 $scope.notificationClass = "glyphicon glyphicon-exclamation-sign orange";
                  $scope.notificationsAvailable = false;
 		      }
     });
@@ -43,8 +74,8 @@ todoapp.controller('todoController', function($scope, $window, dateFilter, $inte
 
 
 
-//initialize todolist
-    $scope.todoList = []; 
+
+   
 
 //function to add todo items
     $scope.todoAdd = function() {
@@ -54,8 +85,9 @@ todoapp.controller('todoController', function($scope, $window, dateFilter, $inte
 
         }
         else {
-        $scope.todoList.push({todoText:$scope.todoInput, todoReminder:'NA', todoReminded: true, todoCompleted: false});        
+        $scope.todoList.push({todoText:$scope.todoInput, createdOn: dateFilter(new Date(), "MM/dd/yyyy"), todoDate:'', todoReminder:'NA', todoReminded: true, todoCompleted: false});        
         $scope.todoInput = "";
+        $scope.storeTODO(); //update todolist in storage
     	}
     };    
 
@@ -64,6 +96,7 @@ todoapp.controller('todoController', function($scope, $window, dateFilter, $inte
 //function to remove todo item
     $scope.removetask = function($index){    
     $scope.todoList.splice($index,1);  
+    $scope.storeTODO(); //update todolist in storage
     };
 
 
@@ -73,11 +106,16 @@ todoapp.controller('todoController', function($scope, $window, dateFilter, $inte
     if(!$scope.todoList[$index].todoCompleted)
     {
         $scope.todoList[$index].todoCompleted = true; 
+        $scope.todoList[$index].todoDate = "";
         $scope.todoList[$index].todoReminder = "NA";
-        $scope.todoList[$index].todoReminded = true;            
+        $scope.todoList[$index].todoReminded = true;
+        $scope.storeTODO(); //update todolist in storage            
     } 
 
-    else $scope.todoList[$index].todoCompleted = false;             
+    else {
+        $scope.todoList[$index].todoCompleted = false;             
+        $scope.storeTODO(); //update todolist in storage
+        }
     
     };
 
@@ -101,10 +139,18 @@ todoapp.controller('todoController', function($scope, $window, dateFilter, $inte
 //function to add reminder to a task
     $scope.addReminder = function(){    	
     	$scope.todoList[$scope.currentSNO].todoReminder = $scope.selectedTime;  
+        $scope.todoList[$scope.currentSNO].todoDate = dateFilter(new Date(), "MM/dd/yyyy");
         $scope.todoList[$scope.currentSNO].todoReminded = false; 
         $scope.todoList[$scope.currentSNO].todoCompleted = false;
-    	$scope.closemodal = "modal";    	
+    	$scope.closemodal = "modal";            
+        $scope.storeTODO(); //update todolist in storage	
     }
+
+
+
+
+
+
 
 //function to check reminder time with respect to current
     function checkTime() {       
@@ -118,6 +164,7 @@ todoapp.controller('todoController', function($scope, $window, dateFilter, $inte
 			            console.log("found match on: " + i + ", at " + $scope.todoList[i].todoReminder);
 			           	spawnNotification($scope.todoList[i].todoText, 'images/todo.png', 'TODO App says');
 			          	$scope.todoList[i].todoReminded = true;	
+                        $scope.storeTODO(); //update todolist in storage
 			        }			       
 		        }
 		 }
@@ -137,6 +184,16 @@ todoapp.controller('todoController', function($scope, $window, dateFilter, $inte
 if( "Notification" in window && Notification.permission === "granted") {
 console.log("timer is on!");
 $interval(checkTime, 5000); //5seconds ticker
+}
+
+
+//function to store todolist, will be called during insert, delete and update
+$scope.storeTODO = function(){
+
+    if (!window.localStorage) {
+
+    }
+    else localStorage.setItem('TODOLIST', JSON.stringify($scope.todoList));
 }
 
 });
