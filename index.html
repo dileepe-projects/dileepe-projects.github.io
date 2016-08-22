@@ -59,29 +59,33 @@
     </p>
 
 </form>
-
+</div>
 
 <br>
-<div class = "container todolist">
-        <div ng-repeat="x in todoList" class="todotext">
+<div class = "tcontainer">
+
+        <div ng-repeat="x in todoList track by $index" class="todotext">
+        
              <div class = "todoOptions">
-                <i ng-hide = "!notificationsAvailable"  class="fa fa-clock-o addReminder {{x.todoReminded}}"  aria-hidden="true" data-toggle="modal" data-target="#reminderModal" ng-click="passReminder($index)" data-toggle="tooltip" title="Set Reminder"></i> <i class="fa fa-check-circle-o markcomplete {{x.todoCompleted}}" aria-hidden="true" ng-click="completetask($index)" data-toggle="tooltip" title="Mark as complete/Incomplete"></i> <i class="fa fa-times-circle removeTask" aria-hidden="true" ng-click="removetask($index)" data-toggle="tooltip" title="Remove Item"></i> 
+                <i ng-hide = "!notificationsAvailable"  class="fa fa-clock-o addReminder {{x.todoReminded}}"  aria-hidden="true" data-toggle="modal" data-target="#reminderModal" ng-click="passReminder($index)" data-toggle="tooltip" title="Set Reminder"></i> <i class="fa fa-check-circle-o markcomplete {{x.todoCompleted}}" aria-hidden="true" ng-click="completetask($index)" data-toggle="tooltip" title="Mark as complete/Incomplete"></i> <i class="fa fa-times-circle removeTask" aria-hidden="true" ng-click="removetask($index)" data-toggle="tooltip" title="Remove Item"></i>
+                <span class = "createdOn">({{x.createdOn}})</span> 
               </div>
              <span id ="todocompleted-{{x.todoCompleted}}">
                 <span ng-bind="x.todoText" reminder = "{{x.todoReminder}}" style="color:white;"></span><br/>               
             </span>
-             <span ng-hide = "!notificationsAvailable" class="label label-warning {{x.todoReminded}}">Remind me at: {{x.todoReminder}}</span><br/>
+             <span ng-hide = "!notificationsAvailable" class="label label-warning {{x.todoReminded}}" style="">Remind me at: {{x.todoDate}} {{x.todoReminder}}</span><br/>
         </div>
         
 </div>
 <br/>
   <p class = "text-center browserOptions">
   <span class = "text-muted"><b><i class="fa fa-globe" aria-hidden="true"></i> Browser<br/></b></span>
-  Desktop Notification: <span ng-bind = "desktopNotification"></span><span class="{{iconClass}}"></span>
+  Desktop Notification: <span ng-bind = "desktopNotification"></span><span class="{{notificationClass}}"></span><br/>
+  Local Storage: <span ng-bind = "localstorage"></span><span class="{{storageClass}}"></span>
   <!--planning to use storage API in near future -->
   <!--IndexedDB: <span class="glyphicon glyphicon-ok"></span> -->
   </p>
-</div>
+
 
 <!-- Modal -->
 <div id="reminderModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
