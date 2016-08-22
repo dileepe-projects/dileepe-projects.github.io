@@ -7,19 +7,19 @@ todoapp.controller('todoController', function($scope, $window, dateFilter, $inte
 
 //check if desktop notification is available in the current browser
 	if (!("Notification" in window)) {
-	    $scope.desktopNotification = "Not Supported";
+	    $scope.desktopNotification = "Not Supported ";
 	    $scope.iconClass = "glyphicon glyphicon-remove red";
         $scope.notificationsAvailable = false;	    
     }
 
     else if(Notification.permission === "granted") {
-    $scope.desktopNotification = "Available";
+    $scope.desktopNotification = "Available ";
     $scope.iconClass = "glyphicon glyphicon-ok green";
     $scope.notificationsAvailable = true;
     }
 
     else if(Notification.permission === "denied") {
-    $scope.desktopNotification = "Denied (by user)";
+    $scope.desktopNotification = "Denied by user (change this in browser settings) ";
     $scope.iconClass = "glyphicon glyphicon-exclamation-sign orange";
     $scope.notificationsAvailable = false;
     }
@@ -28,13 +28,13 @@ todoapp.controller('todoController', function($scope, $window, dateFilter, $inte
     Notification.requestPermission(function (permission) {
 		     // $window.location.reload(); //reload to see what the user has selected (this is needed in chrome)
 		      if (permission === "granted") {
-		       $scope.desktopNotification = "Available";
+		       $scope.desktopNotification = "Available ";
 		       $scope.iconClass = "glyphicon glyphicon-ok green";
                $scope.notificationsAvailable = true;
 		      }
 
 		      if (permission === "denied") {
-		         $scope.desktopNotification = "Denied (by user)";
+		         $scope.desktopNotification = "Denied by user (change this in browser settings) ";
 		    	 $scope.iconClass = "glyphicon glyphicon-exclamation-sign orange";
                  $scope.notificationsAvailable = false;
 		      }
@@ -67,7 +67,7 @@ todoapp.controller('todoController', function($scope, $window, dateFilter, $inte
     };
 
 
-//function to mark tast as complete
+//function to mark task as complete
     $scope.completetask = function($index){   
 
     if(!$scope.todoList[$index].todoCompleted)
@@ -136,7 +136,7 @@ todoapp.controller('todoController', function($scope, $window, dateFilter, $inte
 //timer that runs and checks reminder at given interval
 if( "Notification" in window && Notification.permission === "granted") {
 console.log("timer is on!");
-$interval(checkTime, 5000);
+$interval(checkTime, 5000); //5seconds ticker
 }
 
 });
