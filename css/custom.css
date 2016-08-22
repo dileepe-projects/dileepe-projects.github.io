@@ -23,7 +23,8 @@ h1 {
 
 .todotext{
 	color: white;
-    background-color: #7f94da;
+    /*background-color: #7f94da;*/
+        background-color: #605f5f;
     white-space: pre-line;
     padding: 10px 10px 1px 10px;
     border: 1px solid #CCC;
@@ -59,8 +60,13 @@ h1 {
   
 }
 
-span[todoCompleted=true] {
+/*span[todoCompleted=true] {
     text-decoration: line-through;
+}*/
+
+#todocompleted-true{
+    text-decoration: line-through;
+    color:red;
 }
 
 .label-warning.false {
@@ -68,8 +74,9 @@ span[todoCompleted=true] {
 }
 
 .todoOptions{
-	    margin-left: 260px;
+	    text-align: right;
         margin-top: -40px;
+        font-size: 16px;
 }
 
 
