@@ -126,6 +126,7 @@ $('#clearDraft').click(function() {
 	$('#textfiledata').val("");
 	$('#textfilename').val("");
 	localStorage.removeItem("draftFile");
+	$('#messagetext').text("");  
 });
 
 
