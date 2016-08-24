@@ -32,7 +32,25 @@ var downloadData = (function () {
     
     return function (data, fileName) {
       //check if browser is IE
-      var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
+
+    var ms_ie = false;
+    var ua = window.navigator.userAgent;
+    var msie_ie = ua.indexOf('MSIE ');
+    var trident_ie = ua.indexOf('Trident/');
+    var edge_ie = ua.indexOf('Edge/');
+    
+    if ((msie_ie > -1) || (trident_ie > -1) || (edge_ie > -1)) {
+        ms_ie = true;
+    }
+    if ( ms_ie ) {
+       var blobAsTxtFile = new Blob([data], {
+		    	type: 'text/plain'
+		  	  });    			
+   			  window.navigator.msSaveBlob(blobAsTxtFile, fileName);
+    }
+
+
+      /*var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
       ie11 = navigator.userAgent.match(/Trident\/7.0/) && navigator.userAgent.match(/rv:11/),
       ieEDGE = navigator.userAgent.match(/Edge/g),
       ieVer=(ie ? ie[1] : (ie11 ? 11 : (ieEDGE ? 12 : -1)));
@@ -44,7 +62,7 @@ var downloadData = (function () {
 		  	  });    			
    			  window.navigator.msSaveBlob(blobAsTxtFile, fileName);
 
-  		}
+  		}*/
 
   		else {
   			$('body').append('<a id="filedownload">');
