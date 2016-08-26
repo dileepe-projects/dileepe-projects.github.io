@@ -39,6 +39,8 @@ var downloadData = (function () {
     var trident_ie = ua.indexOf('Trident/');
     var edge_ie = ua.indexOf('Edge/');
     
+    $('#userAgent').text(ua);
+    
     if ((msie_ie > -1) || (trident_ie > -1) || (edge_ie > -1)) {
         ms_ie = true;
     }
