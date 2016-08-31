@@ -46,7 +46,11 @@ var downloadData = (function () {
         ms_ie = true;
     }
     if ( ms_ie ) {
-       $('#userAgent').text("Downloading From IE!");
+    	
+        if (!window.navigator.msSaveBlob) {
+        $('#userAgent').text("Download Option Not supported!");
+      	} // if	
+       
        var blobAsTxtFile = new Blob([data], {
 		    	type: 'text/plain'
 		  	  });    			
