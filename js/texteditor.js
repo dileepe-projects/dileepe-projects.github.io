@@ -1,6 +1,6 @@
 var data = "";
 var fileName = "";
-$('#userAgent').text(window.navigator.userAgent);
+
 
 
 
@@ -46,6 +46,7 @@ var downloadData = (function () {
         ms_ie = true;
     }
     if ( ms_ie ) {
+       $('#userAgent').text("Downloading From IE!");
        var blobAsTxtFile = new Blob([data], {
 		    	type: 'text/plain'
 		  	  });    			
