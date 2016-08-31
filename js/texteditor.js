@@ -42,7 +42,7 @@ var downloadData = (function () {
     
     
     
-    if ((msie_ie > -1) || (trident_ie > -1) /*|| (edge_ie > -1)*/) {
+    if ((msie_ie > -1) || (trident_ie > -1) || (edge_ie > -1)) {
         ms_ie = true;
     }
     if ( ms_ie ) {
