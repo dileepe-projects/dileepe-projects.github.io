@@ -57,21 +57,6 @@ var downloadData = (function () {
    			  window.navigator.msSaveBlob(blobAsTxtFile, fileName);
     }
 
-
-      /*var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
-      ie11 = navigator.userAgent.match(/Trident\/7.0/) && navigator.userAgent.match(/rv:11/),
-      ieEDGE = navigator.userAgent.match(/Edge/g),
-      ieVer=(ie ? ie[1] : (ie11 ? 11 : (ieEDGE ? 12 : -1)));
-      
-      if (ieVer>-1) {
-      		  //if IE then use window navigator to save text file as BLOB is not supported
-		      var blobAsTxtFile = new Blob([data], {
-		    	type: 'text/plain'
-		  	  });    			
-   			  window.navigator.msSaveBlob(blobAsTxtFile, fileName);
-
-  		}*/
-
   		else {
   			$('body').append('<a id="filedownload">');
   			$('#filedownload').attr("style", "display: none");  			
@@ -98,7 +83,7 @@ var downloadData = (function () {
 
 $('#downloadDraft').click(function() {
 			data = $('#textfiledata').val();
-			fileName = $('#textfilename').val();
+			fileName = $('#textfilename').val()+".txt";
 			if(!fileName == "" && ! data == "")
 			{
 				downloadData(data, fileName);
