@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-		<meta charset="utf-8">
+    <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Simple Text Editor</title>
+    <title>Simple Text Editor</title>
 
-		<!-- Bootstrap Core CSS -->
+    <!-- Bootstrap Core CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
         <!-- font-awesome css -->
@@ -31,27 +31,29 @@
 <br/>
 <div class="container" id="container">
   <div class = "editormenubar">
-	  <ul>    
-	  <li><button id="newDraft"><i class="fa fa-file-text" aria-hidden="true"></i> New </button></li>	  
-	  <li><button id="clearDraft"><i class="fa fa-trash" aria-hidden="true"></i> Delete </button></li>
-	  <li><button id="downloadDraft"><i class="fa fa-download" aria-hidden="true"></i> Download </button></li>
-	  <li><button id="saveDraft"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Draft </button></li>
-	  <li><button id="clearTextArea"><i class="fa fa-eraser" aria-hidden="true"></i> Clear </button></li>
-	  
-	  <li></li>
-	</ul>
+    <ul>    
+    <li><button id="openFile"><i class="fa fa-folder-open" aria-hidden="true"></i> Open </button></li>   
+    <li><button id="newDraft"><i class="fa fa-file-text" aria-hidden="true"></i> New </button></li>   
+    <li><button id="clearDraft"><i class="fa fa-trash" aria-hidden="true"></i> Delete </button></li>
+    <li><button id="downloadDraft"><i class="fa fa-download" aria-hidden="true"></i> Download </button></li>
+    <li><button id="saveDraft"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Draft </button></li>
+    <li><button id="clearTextArea"><i class="fa fa-eraser" aria-hidden="true"></i> Clear </button></li>
+    
+    <li></li>
+  </ul>
   </div> 
   <br/>
   <div class = "filenamebar" style="padding: 5px;">
-  		<label style="color:white;">File Name: </label><input type="text" name="filename" class="filename" placeholder="eg: untitled" id="textfilename" /><label style="color:white;">.txt</label>
+  <input type="file" id="fileinput" accept=".txt" style = "display:none;"/>
+      <label style="color:white;">File Name: </label><input type="text" name="filename" class="filename" placeholder="eg: untitled" id="textfilename" /><label style="color:white;">.txt</label>
   </div>
   <div class = "texteditor">
-  	<textarea type="text" class="form-control editor" id="textfiledata" autofocus></textarea>
+    <textarea type="text" class="form-control editor" id="textfiledata" autofocus></textarea>
   </div>
   <br/>
   <div class = "message">
   <p id= "messagetext"></p>
-  <p id= "userAgent" style="color:red;"></p>
+  <p id= "errmsg" style="color:red;"></p>
 </div>
 
  
