@@ -1,0 +1,10 @@
+.navbar-inverse-green {
+    background-color: #2bd660;
+    border-color: #2bd660;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    color: #fffdfd;
+    text-decoration: none;
+    background-color: #2bd660;
+}
