@@ -32,7 +32,7 @@ $.getJSON( "./data/data.json", function( json ) {
             Object.keys(item).forEach(function(key) {
               total = total + item[key];
               $("#expenses").append("<tr><td>" + key + "</td> <td>"+item[key]+"</td></tr>")
-              console.log(key + ": " + item[key]);
+              //console.log(key + ": " + item[key]);
             });
           });
           remaining_balance = data[j].starting_balance - total;
