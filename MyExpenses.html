@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>My Expenses</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="css/expenses.css" />
     <script src="jquery/js/jquery-3.3.1.js"></script>
@@ -10,31 +11,30 @@
     <script src="js/expenses.js"></script>
   </head>
   <body>
-    <nav class="navbar navbar-inverse-green navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span> 
-              </button>
-              <a class="navbar-brand" style="color: #ffffff;"><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> My Expenses</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                <div class="dropdown-toggle navbar-brand" data-toggle="dropdown" style="color: #ffffff; cursor: pointer;"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Month
-                <span class="caret"></span></div>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">January</a></li>
-                    <li><a href="#">February</a></li>
-                    <li><a href="#">March</a></li>
-                  </ul>
-                </li>
-              </ul>
-              
-            </div>
-          </div>
-      </nav>
+   
+    
+    <div class="container">
+    
+      <div class="form-inline">
+      <div style="text-align: center;"><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true" style="font-size: 30px"></span><h2> My Expenses </h2></div>
+        <div class="form-group mx-sm-3 mb-2">
+                <select class="form-control" id="month_year">
+                    <option disabled selected value="Select Month">Select Month</option>
+                </select>
+        </div>
+        <button id="get_data" class="btn btn-primary mb-2">Get Data</button>
+        <br/>
+        
+        <table class="table table-bordered" style="margin-top:10px;">
+        <thead>
+        </thead>
+        <tbody id="expenses">
+        </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="footer">
+          <p><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Dont spend too much bro!</p>
+    </div>
   </body>
 </html>
