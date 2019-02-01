@@ -1,14 +1,21 @@
-.navbar-inverse-green {
-    background-color: #2bd660;
-    border-color: #2bd660;
-}
 
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-    color: #fffdfd;
-    text-decoration: none;
-    background-color: #2bd660;
-}
 
 .expenses{
     padding:60px;
 }
+
+.container {
+    padding:30px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+ }
