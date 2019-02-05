@@ -13,9 +13,16 @@
 }
 
 .footer {
-    
+   
     left: 0;
     bottom: 0;
     width: 100%;
     text-align: center;
+ }
+
+ .mergecols{
+    text-align: center;
+    background: #319e35;
+    color: white;
+    font-weight: bold;
  }
