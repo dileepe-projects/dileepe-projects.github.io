@@ -3,13 +3,11 @@ $.getJSON( "./data/data.json", function( json ) {
   var selected_month = "";
   for (var i=0; i<data.length; i++)
   {
-    //console.log(data[i].month);
-    $("select").append("<option value='" + data[i].id + "'>" + data[i].month + ' ' + data[i].year + "</option>");
-    
+    $("select").append("<option value='" + data[i].id + "'>" + data[i].month + ' ' + data[i].year + "</option>");    
   }
 
   $("#get_data").click(function(){
-
+    $("#expenses").empty();
     selected_month = $("#month_year").val(); 
     if(selected_month==null||selected_month=="")
     {
@@ -20,26 +18,55 @@ $.getJSON( "./data/data.json", function( json ) {
       {
         if(data[j].id==selected_month)
         {
-          $("#expenses").empty();
-          $("#expenses").append("<tr><td>Month</td> <td>"+data[j].month+"</td></tr>");
-          $("#expenses").append("<tr><td>Year</td> <td>"+data[j].year+"</td></tr>");
-          $("#expenses").append("<tr><td>Starting Balance</td> <td>"+data[j].starting_balance+"</td></tr>");
-         
-          var obj = data[j].expenses;
+          var ote = data[j].Expenses[0].One_Time_Expense; 
+          var re =  data[j].Expenses[0].Recurring_Expense;
           var total = 0;
           var remaining_balance = 0;
-          obj.forEach(function(item) {
-            Object.keys(item).forEach(function(key) {
-              total = total + item[key];
-              $("#expenses").append("<tr><td>" + key + "</td> <td>"+item[key]+"</td></tr>")
-              //console.log(key + ": " + item[key]);
-            });
-          });
-          remaining_balance = data[j].starting_balance - total;
-          $("#expenses").append("<tr class='bg-success'><td>Current Balance</td> <td>"+parseFloat(remaining_balance).toFixed(2)+"</td></tr>");
+          if(ote.length>0)
+            {
+                           
+              $("#expenses").append("<tr><td class='mergecols' colspan = '2'>One Time Expense</td></tr>");
+              ote.forEach(function(item) {
+                Object.keys(item).forEach(function(key) {
+                  total = total + item[key];
+                  $("#expenses").append("<tr><td>" + key + "</td> <td>"+item[key]+"</td></tr>")
+                  
+                });
+              });
+            }
+            if(re.length>0)
+            {
+                            
+              $("#expenses").append("<tr><td class='mergecols' colspan = '2'>Recurring Expense</td></tr>");
+              re.forEach(function(item) {
+                Object.keys(item).forEach(function(key) {
+                  
+                  if(key!="ATM Withdrawal")
+                  {
+                    total = total + item[key];
+                  }
+                  
+                  if(key=="ATM Withdrawal")
+                  {
+                    var atmwdls = item[key]; 
+                    
+                    for(var z=0; z<atmwdls.length; z++)
+                    {
+                      total = total + atmwdls[z] 
+                      
+                    }
+                    
+                  }
+                  $("#expenses").append("<tr><td>" + key + "</td> <td>"+item[key]+"</td></tr>")
+                  
+                });
+              });
+            }
+            console.log(data[j].Starting_Balance-total)
+            remaining_balance = data[j].Starting_Balance - total;
+            $("#expenses").append("<tr class='bg-warning'><td>Current Balance</td> <td>"+parseFloat(remaining_balance).toFixed(2)+"</td></tr>");
           
-        
-
+          
         }
         
       }
