@@ -22,7 +22,11 @@
 
  .mergecols{
     text-align: center;
-    background: #319e35;
+    background: #000000;
     color: white;
     font-weight: bold;
  }
+
+ .btn {
+    font-weight: bold;
+}
