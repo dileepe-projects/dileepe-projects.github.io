@@ -13,9 +13,13 @@ $.getJSON("./data/data.json", function(json) {
           //month should be selected
           alert("Select an option to proceed"); 
       } else {
-
+         
           for (var j = 0; j < data.length; j++) {
               if (data[j].id == selected_month) {
+                  //only required for csc download file
+                  $("#expenses").append("<tr><td class='mergecols hide' colspan = '2'>"+data[j].month+" - "+data[j].year+ "</td></tr>");
+                  $("#expenses").append("<tr><td class='mergecols hide' colspan = '2'>Starting Balance: "+data[j].Starting_Balance+ "</td></tr>");
+                  
                   var ote = data[j].Expenses[0].One_Time_Expense;
                   var re = data[j].Expenses[0].Recurring_Expense;
                   var total = 0;
@@ -32,6 +36,7 @@ $.getJSON("./data/data.json", function(json) {
                           });
                       });
                   }
+                 
                   if (re.length > 0) {
 
                       $("#expenses").append("<tr><td class='mergecols' colspan = '2'>Recurring Expense</td></tr>");
