@@ -61,6 +61,9 @@ $.getJSON("./data/data.json", function(json) {
                   {
                       $('#download_data').prop("disabled",false);
                   }
+                  $("#expenses").append("<tr><td class='mergecols' colspan = '2'> Last Updated: "+data[j].LastUpdated+"</td></tr>");
+
+                  
 
               }
 
