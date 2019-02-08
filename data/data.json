@@ -22,13 +22,13 @@
                   "ATM Withdrawal": [1900,1900],
                   "Wizlabs Bigdata Exam": 1899.00,
                   "Amazon Shopping": 575.00,
-                  "Swiggy": 350.00
+                  "Swiggy": [350,172]
                 }]
               
               
             }     
           ],
-          "LastUpdated":"02/06/2019"
+          "LastUpdated":"02/08/2019"
         }
 
 
