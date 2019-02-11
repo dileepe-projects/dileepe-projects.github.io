@@ -33,6 +33,9 @@
         <!--bootstrap js for certain functionalites (modals etc) to work -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+        <!--bootstrap notify js plugin for floating notifications -->
+        <script src="./bootstrap/js/bootstrap-notify.js"></script>
+
          <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -73,7 +76,7 @@
              <span id ="todocompleted-{{x.todoCompleted}}">
                 <span ng-bind="x.todoText" reminder = "{{x.todoReminder}}" style="color:white;"></span><br/>               
             </span>
-             <span ng-hide = "!notificationsAvailable" class="label label-warning {{x.todoReminded}}" style="">Remind me at: {{x.todoDate}} {{x.todoReminder}}</span><br/>
+             <span ng-hide = "!notificationsAvailable" class="label label-warning {{x.todoReminded}}" >Remind me at: {{x.todoDate}} {{x.todoReminder}}</span><br/>
         </div>
         
 </div>
@@ -81,7 +84,8 @@
   <p class = "text-center browserOptions">
   <span class = "text-muted"><b><i class="fa fa-globe" aria-hidden="true"></i> Browser<br/></b></span>
   Desktop Notification: <span ng-bind = "desktopNotification"></span><span class="{{notificationClass}}"></span><br/>
-  Local Storage: <span ng-bind = "localstorage"></span><span class="{{storageClass}}"></span>
+  Local Storage: <span ng-bind = "localstorage"></span><span class="{{storageClass}}"></span><br/>
+  <b>Note: Allow desktop notifications for this website in your browser to view desktop alerts</b>
   <!--planning to use storage API in near future -->
   <!--IndexedDB: <span class="glyphicon glyphicon-ok"></span> -->
   </p>
