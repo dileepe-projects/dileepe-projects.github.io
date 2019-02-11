@@ -161,7 +161,8 @@ if (!window.localStorage) {
 		        {
 		        	if(dateFilter(new Date(), 'h:mm a') == $scope.todoList[i].todoReminder  && ! $scope.todoList[i].todoReminded)
 			        {
-			            console.log("found match on: " + i + ", at " + $scope.todoList[i].todoReminder);
+                        console.log("found match on: " + i + ", at " + $scope.todoList[i].todoReminder);
+                        notifyme($scope.todoList[i].todoText, 'images/todo.png', 'TODO App says');
 			           	spawnNotification($scope.todoList[i].todoText, 'images/todo.png', 'TODO App says');
 			          	$scope.todoList[i].todoReminded = true;	
                         $scope.storeTODO(); //update todolist in storage
@@ -179,6 +180,14 @@ if (!window.localStorage) {
 		  }
   		var n = new Notification(theTitle, options);  
     }
+
+function notifyme(theBody, theIcon, theTitle){
+    $.notify({
+        icon: theIcon,
+        title: "<strong>"+theTitle+": </strong> ",
+        message: theBody
+    });
+}
 
 //timer that runs and checks reminder at given interval
 if( "Notification" in window && Notification.permission === "granted") {
