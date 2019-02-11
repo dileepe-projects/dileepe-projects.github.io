@@ -19,16 +19,17 @@
               }],
               "Recurring_Expense": [
                 {
-                  "ATM Withdrawal": [1900,1900],
+                  "ATM Withdrawal": [1900,1900,1900,1900],
                   "Wizlabs Bigdata Exam": 1899.00,
                   "Amazon Shopping": 575.00,
-                  "Swiggy": [350,172,224,240]
+                  "Swiggy": [350,172,240,224,380,196],
+                  "Flipkart":[434,922]
                 }]
               
               
             }     
           ],
-          "LastUpdated":"02/08/2019"
+          "LastUpdated":"02/11/2019"
         }
 
 
