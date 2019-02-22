@@ -15,21 +15,23 @@
                   "Phone Bill Wife": 588.00,
                   "Maid": 1500.00,
                   "Milk Bill": 600.00,
-                  "Credit Card": 20000.00
+                  "Credit Card": 20000.00,
+                  "New Debit Card price": 147.50
+                  
               }],
               "Recurring_Expense": [
                 {
-                  "ATM Withdrawal": [1900,1900,1900,1900],
+                  "ATM Withdrawal": [1900,1900,1900,1900,1900,2500],
                   "Wizlabs Bigdata Exam": 1899.00,
                   "Amazon Shopping": 575.00,
-                  "Swiggy": [350,172,240,224,380,196],
+                  "Swiggy": [350,172,240,224,380,196,397,252,482],
                   "Flipkart":[434,922]
                 }]
               
               
             }     
           ],
-          "LastUpdated":"02/11/2019"
+          "LastUpdated":"02/22/2019"
         }
 
 
