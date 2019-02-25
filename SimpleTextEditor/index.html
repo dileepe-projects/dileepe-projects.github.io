@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/vnd.microsoft.icon" href="./stylesheets/images/text-editor.ico" />
+        
+    <title>Simple Text Editor</title>
+
+    <!-- Bootstrap Core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+        <!-- font-awesome css -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"/>
+
+        
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="./stylesheets/texteditor.css"/>    
+
+        
+       
+</head>
+<body>
+<br/>
+<div class="container" id="container">
+  <div class = "editormenubar">
+    <ul>    
+    <li><button id="openFile"><i class="fa fa-folder-open" aria-hidden="true"></i> Open </button></li>   
+    <li><button id="newDraft"><i class="fa fa-file-text" aria-hidden="true"></i> New </button></li>   
+    <li><button id="clearDraft"><i class="fa fa-trash" aria-hidden="true"></i> Delete </button></li>
+    <li><button id="downloadDraft"><i class="fa fa-download" aria-hidden="true"></i> Download </button></li>
+    <li><button id="saveDraft"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Draft </button></li>
+    <li><button id="clearTextArea"><i class="fa fa-eraser" aria-hidden="true"></i> Clear </button></li>
+    
+    <li></li>
+  </ul>
+  </div> 
+  <br/>
+  <div class = "filenamebar" style="padding: 5px;">
+  <input type="file" id="fileinput" accept=".txt" style = "display:none;"/>
+      <label style="color:white;">File Name: </label><input type="text" name="filename" class="filename" placeholder="eg: untitled" id="textfilename" /><label style="color:white;">.txt</label>
+  </div>
+  <div class = "texteditor">
+    <textarea type="text" class="form-control editor" id="textfiledata" autofocus></textarea>
+  </div>
+  <br/>
+  <div class = "message">
+  <p id= "messagetext"></p>
+  <p id= "errmsg" style="color:red;"></p>
+</div>
+
+ 
+
+<!-- Moment JS -->
+<script src="./scripts/moment-with-locales.min.js"></script>
+
+<!-- JQUERY -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!--BOOTSTRAP JS-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Custom JS -->
+<script src="./scripts/texteditor.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="./stylesheets/images/todo.png" />
+        <title>TODO App</title>
+        
+        <!-- Bootstrap Core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+        <!-- Google fonts css -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poiret+One" >
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Denk+One">
+
+        <!-- font-awesome css -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"/>
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="./stylesheets/todo.css"/>              
+       
+        <!-- Angular JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>        
+        
+        <!--custom js releated to this APP -->
+        <script src="./scripts/todo-controller.js"></script>
+       
+        <!-- JQUERY (i know this will not go well with angular but need it for bootstrap ) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+        <!--bootstrap js for certain functionalites (modals etc) to work -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!--bootstrap notify js plugin for floating notifications -->
+        <script src="./scripts/bootstrap-notify.js"></script>
+
+         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+</head>
+
+<body ng-app="todoapp" ng-controller="todoController">
+
+<div class = "container">
+<h1>TODO <img src="./stylesheets/images/todo.png" height="42" width="42"></h1>
+
+<form>
+    <!-- can use input as well -->
+    <!--<input class="form-control todoinput" type="text" ng-model="todoInput" placeholder="Add a task...."> <br/> -->
+    <textarea type="text" placeholder = "Add a task...." class="form-control todoinput" ng-model = "todoInput"></textarea> <br/>
+    <p class = "text-center">
+    <button ng-click="todoAdd()" class = "btn btn-success">Add New <i class="fa fa-plus-square" aria-hidden="true"></i></button>  
+    </p>
+    <p class = "text-center">
+    <span class = "todoCount">Total Todo Items:  </span><span class="badge" ng-bind = "todoList.length"></span>
+    </p>
+
+</form>
+</div>
+
+<br>
+<div class = "tcontainer">
+
+        <div ng-repeat="x in todoList track by $index" class="todotext">
+        
+             <div class = "todoOptions">
+                <i ng-hide = "!notificationsAvailable"  class="fa fa-clock-o addReminder {{x.todoReminded}}"  aria-hidden="true" data-toggle="modal" data-target="#reminderModal" ng-click="passReminder($index)" data-toggle="tooltip" title="Set Reminder"></i> <i class="fa fa-check-circle-o markcomplete {{x.todoCompleted}}" aria-hidden="true" ng-click="completetask($index)" data-toggle="tooltip" title="Mark as complete/Incomplete"></i> <i class="fa fa-times-circle removeTask" aria-hidden="true" ng-click="removetask($index)" data-toggle="tooltip" title="Remove Item"></i>
+                <span class = "createdOn">({{x.createdOn}})</span> 
+              </div>
+             <span id ="todocompleted-{{x.todoCompleted}}">
+                <span ng-bind="x.todoText" reminder = "{{x.todoReminder}}" style="color:white;"></span><br/>               
+            </span>
+             <span ng-hide = "!notificationsAvailable" class="label label-warning {{x.todoReminded}}" >Remind me at: {{x.todoDate}} {{x.todoReminder}}</span><br/>
+        </div>
+        
+</div>
+<br/>
+  <p class = "text-center browserOptions">
+  <span class = "text-muted"><b><i class="fa fa-globe" aria-hidden="true"></i> Browser<br/></b></span>
+  Desktop Notification: <span ng-bind = "desktopNotification"></span><span class="{{notificationClass}}"></span><br/>
+  Local Storage: <span ng-bind = "localstorage"></span><span class="{{storageClass}}"></span><br/>
+  <b>Note: Allow desktop notifications for this website in your browser to view desktop alerts</b>
+  <!--planning to use storage API in near future -->
+  <!--IndexedDB: <span class="glyphicon glyphicon-ok"></span> -->
+  </p>
+
+
+<!-- Modal -->
+<div id="reminderModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">      
+      <div class="modal-body">
+      
+      <div style="display:none;">
+          <span ng-model = "currentSNO" ng-bind = "currentSNO"></span>               
+      </div>
+       <p class = "text-center">
+        <select class = "form-control" ng-model="selectedTime" style="width: 150px; margin:auto;">
+               <option ng-repeat="option in availableOptions" value="{{option.id}}">{{option.name}}</option>
+           </select>     
+           <br/>
+           <button class = "btn btn-primary" ng-click = "addReminder()" data-dismiss = {{closemodal}}>Set Reminder</button>
+            <button class = "btn btn-danger" data-dismiss="modal">Cancel</button>
+           </p>
+      </div>     
+    </div>
+
+  </div>
+</div>
+
+
+</body>
+</html>
+

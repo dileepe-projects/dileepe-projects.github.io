@@ -1,0 +1,32 @@
+
+
+.expenses{
+    padding:60px;
+}
+
+.container {
+    padding:30px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+   
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+ }
+
+ .mergecols{
+    text-align: center;
+    background: #000000;
+    color: white;
+    font-weight: bold;
+ }
+
+ .btn {
+    font-weight: bold;
+}

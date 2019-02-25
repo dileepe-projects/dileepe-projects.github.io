@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" >
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="./stylesheets/images/expenses_icon.png" />
+    <title>My Expenses</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./stylesheets/expenses.css" />
+    <!-- font-awesome css -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    
+  </head>
+  <body>
+   
+    
+    <div class="container" >
+    
+      <div class="form-inline">
+      <div style="text-align: center;"><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true" style="font-size: 30px"></span><h2> My Expenses </h2></div>
+        <div class="form-group mx-sm-3 mb-2">
+                <select class="form-control" id="month_year">
+                    <option disabled selected value="Select Month">Select Month</option>
+                </select>
+        </div>
+        <button id="get_data" class="btn btn-primary mb-2"><i class="fas fa-eye"></i> View</button>
+        <button id="download_data" class="btn btn-success mb-2" disabled="true" data-toggle="tooltip" title="download"><i class="fas fa-file-csv"></i> .CSV</button>
+        
+        <br/>
+        
+        <table id="expenses_table" class="table table-bordered" style="margin-top:10px;">
+        <thead>
+        </thead>
+        <tbody id="expenses">
+        </tbody>
+        </table>
+        
+      </div>
+    </div>
+    <div class="footer">
+          <p><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Dont spend too much bro!</p>
+    </div>
+
+
+
+<!-- JQUERY -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!--BOOTSTRAP JS-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="./scripts/expenses.js"></script>
+    <script src="./scripts/export_csv.js"></script>
+
+  </body>
+</html>
