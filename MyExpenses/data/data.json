@@ -31,8 +31,32 @@
               
             }     
           ],
-          "LastUpdated":"02/22/2019"
-        }
+          "LastUpdated":"03/04/2019"
+        },
+        {
+            "id": "Mar_2019",
+            "month": "March",
+            "year": 2019,
+            "Starting_Balance": 97259.54,
+            "Expenses": [
+              { 
+                "One_Time_Expense" : [
+                  {
+                    "Rent": 18000.00,
+                    "Maid": 2000
+                }],
+                "Recurring_Expense": [
+                  {
+                    "ATM Withdrawal": [1900]
+                  }]
+                
+                
+              }     
+            ],
+            "LastUpdated":"03/04/2019"
+          }
+
+
 
 
 
