@@ -28,21 +28,32 @@
         </div>
         
         <div class="content">
-                        <div class="container about">
-
-
-                                        <h4>Excel-Edit</h4>
-                                        
-                                            <ul>
-                                                    <li><p>Upload .xls, .xlsx using import menu.</p><p> Note: DATA IS NOT SENT TO ANY SERVER (parsing and rendering done in your browser)</p></li>
-                                                    <li><p>Edit the uploaded data through Edit menu</p></li>
-                                                    <li><p>View Pivot Charts through Pivot menu</p></li>
-                                                    <li><p>Download the updated sheet using Export Option</p></li>
-                                            </ul>
-                                        
-                                        
-                                        
-                                        </div>
+                <div class="container">
+                        <div style="padding:10px">
+                                <input type="file" id="input-excel" accept=".xls" class="btn btn-primary"/>
+                        </div>
+                
+                            <div class="fileDetails opts"">
+                                    <div class="panel panel-default">
+                                           
+                                            <div class="panel-body">
+                                                    <div class="row">
+                                                            <div class="col-sm-4"><label class="lbl grey">NO OF ROWS UPLOADED:</label> <span class="fdata blue" id="rCount"></span></div>
+                                                            <div class="col-sm-4"><label class="lbl grey">File Name:</label> <span class="fdata blue" id="fname"></span></div>
+                                                           
+                                                            
+                                                    </div>
+                                                    <div class="row">
+                                                            <div class="col-sm-4"><label class="lbl grey">File Size:</label> <span class="fdata blue" id="fsize"></span></div>
+                                                            <div class="col-sm-4"><label class="lbl grey">Uploaded on:</label> <span class="fdata blue" id="fdate"></span></div>
+                                                            
+                                                    </div>                         
+                                                
+                                            </div>                    
+                                    </div>        
+                               
+                            </div>
+                </div>
                 
         </div>
            
