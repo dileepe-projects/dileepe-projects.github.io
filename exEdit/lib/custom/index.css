@@ -1,0 +1,33 @@
+.spaced{
+    margin-left:10px;
+}
+
+#fileUpload{
+    display:none;
+}
+
+#selectFile{
+    cursor: pointer;
+}
+
+.fileDetails{
+    font-size: 15px;
+    margin: 15px;
+}
+
+.blue{
+    color: #4070c7;
+}
+
+.grey{
+    color:grey;
+}
+
+#dvExcel{
+    font-size: 12px;
+}
+
+th {
+    background-color: #28a745;
+    color: white;
+}

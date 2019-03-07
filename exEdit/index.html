@@ -2,49 +2,89 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="./lib/images/excel.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Excel - Edit|PivotView|Download</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>ExEdit</title>
+    <!--Bootstrap stylesheets-->
+    <link rel="stylesheet" href="./lib/bootstrap/bootstrap.min.css">
+
+    <!--Datatables stylesheets-->
+    <link rel="stylesheet" href="./lib/datatable/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="./lib/datatable/dataTables.bootstrap4.min.css">
     
-    <script src="./lib/js/app.js"></script>
-    <link rel="stylesheet" href="./lib/css/app.css">
-    
+    <!--custom stylesheet-->
+    <link rel="stylesheet" href="./lib/custom/index.css">
+
+     
+   
 </head>
 <body>
+    <div class="vnav">    
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand">Ex-Edit</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">   
+                        <li class="nav-item">
+                                <div class="form-inline my-2 my-lg-0">
+                                    <label id="selectFile" class= "btn btn-primary my-2 my-sm-0 spaced" >Choose A file</label>                                    
+                                    <button class="btn btn-outline-primary my-2 my-sm-0 spaced" id="upload" >Upload</button>            
+                                </div>
+                        </li>              
+                        
+                        <li class="nav-item">                                                                        
+                                <button class="btn btn-outline-primary my-2 my-sm-0 spaced" >Modify</button>  
+                        </li>
+                        <li class="nav-item">                                                                        
+                                <button class="btn btn-outline-primary my-2 my-sm-0 spaced" >Download</button>  
+                        </li>               
+                </ul>          
+            </div>
+        </nav>
+    </div>
 
-        <div class="sidenav">
-          <a style="color:white" href="/exEdit/index.html"><img src="./lib/images/excel.png" height="42" width="42" style="background-color: white;"> EX-EDIT</a>
-          <a href="/exEdit/import.html"><i class="fas fa-upload ico"></i> Import Data </a>
-          <a href="/exEdit/edit.html"><i class="fas fa-edit ico"></i> Edit Data </a>
-          <a href="/exEdit/view.html"><i class="fas fa-eye ico"></i> Pivot - View </a>
-          <a href="/exEdit/export.html"><i class="fas fa-download ico"></i> Export Data </a>
-             
+    <div class="container">
+        <div class="fileDetails">            
+                <input type="file" id="fileUpload" class="btn btn-primary"/>
+                <div class="row">
+                        <div class="col-sm-5"><label class="lbl grey">File Name:</label> <span class="fdata blue" id="fname"> - </span></div>
+                        <div class="col-sm-5"><label class="lbl grey">File Size:</label> <span class="fdata blue" id="fsize"> - </span></div>
+                        
+                </div>
+                <div class="row">
+                        <div class="col-sm-5"><label class="lbl grey">Status:</label> <span class="fdata blue" id="fstatus"> - </span></div>
+                        
+                        
+                </div>
+                
+            
         </div>
         
-        <div class="content">
-                        <div class="container about">
+    </div>
+    <div id="dvExcel"></div>
+    
 
 
-                                        <h4>Excel-Edit</h4>
-                                        
-                                            <ul>
-                                                    <li><p>Upload .xls, .xlsx using import menu.</p><p> Note: DATA IS NOT SENT TO ANY SERVER (parsing and rendering done in your browser)</p></li>
-                                                    <li><p>Edit the uploaded data through Edit menu</p></li>
-                                                    <li><p>View Pivot Charts through Pivot menu</p></li>
-                                                    <li><p>Download the updated sheet using Export Option</p></li>
-                                            </ul>
-                                        
-                                        
-                                        
-                                        </div>
-                
-        </div>
-           
-        </body>
+
+    <!--sheetjs scripts-->
+    <script type="text/javascript" src="./lib/sheetjs/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="./lib/sheetjs/jszip.js"></script>
+
+    <!--jquery script-->
+    <script type="text/javascript" src="./lib/jquery/jquery.min.js"></script>
+
+    <!--bootstrap scripts-->
+    <script type="text/javascript" src="./lib/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./lib/bootstrap/popper.min.js"></script>
+
+    <!--datatables scripts-->
+    <script type="text/javascript" src="./lib/datatable/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="./lib/datatable/dataTables.bootstrap4.min.js"></script>
+
+    <!--custom scripts-->
+    <script type="text/javascript" src="./lib/custom/index.js"></script>
+
+</body>
 </html>
