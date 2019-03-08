@@ -6,15 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ExEdit</title>
     <!--Bootstrap stylesheets-->
-    <link rel="stylesheet" href="./lib/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="./lib/bootstrap/bootstrap4.min.css">
 
     <!--Datatables stylesheets-->
     <link rel="stylesheet" href="./lib/datatable/jquery.dataTables.min.css">
     <link rel="stylesheet" href="./lib/datatable/dataTables.bootstrap4.min.css">
+
+     <!--fontawesome stylesheets-->
+     <link rel="stylesheet" href="./lib/fontawesome/css/fontawesome.css">
+     <link rel="stylesheet" href="./lib/fontawesome/css/all.css">
     
     <!--custom stylesheet-->
     <link rel="stylesheet" href="./lib/custom/index.css">
-
      
    
 </head>
@@ -29,17 +32,18 @@
                 <ul class="navbar-nav mr-auto">   
                         <li class="nav-item">
                                 <div class="form-inline my-2 my-lg-0">
-                                    <label id="selectFile" class= "btn btn-primary my-2 my-sm-0 spaced" >Choose A file</label>                                    
-                                    <button class="btn btn-outline-primary my-2 my-sm-0 spaced" id="upload" >Upload</button>            
+                                    <label id="selectFile" class= "btn btn-primary my-2 my-sm-0 spaced" > Choose A file</label>                                    
+                                    <button class="btn btn-outline-primary my-2 my-sm-0 spaced" id="upload" ><i class="fas fa-file-upload"></i> Upload</button>            
                                 </div>
                         </li>              
                         
                         <li class="nav-item">                                                                        
-                                <button class="btn btn-outline-primary my-2 my-sm-0 spaced" >Modify</button>  
+                                <button class="btn btn-outline-primary my-2 my-sm-0 spaced" ><i class="fas fa-edit"></i> Modify</button>  
                         </li>
                         <li class="nav-item">                                                                        
-                                <button class="btn btn-outline-primary my-2 my-sm-0 spaced" >Download</button>  
-                        </li>               
+                                <button class="btn btn-outline-primary my-2 my-sm-0 spaced" ><i class="fas fa-file-download"></i> Download</button>  
+                        </li>  
+                                  
                 </ul>          
             </div>
         </nav>
@@ -49,14 +53,17 @@
         <div class="fileDetails">            
                 <input type="file" id="fileUpload" class="btn btn-primary"/>
                 <div class="row">
-                        <div class="col-sm-5"><label class="lbl grey">File Name:</label> <span class="fdata blue" id="fname"> - </span></div>
-                        <div class="col-sm-5"><label class="lbl grey">File Size:</label> <span class="fdata blue" id="fsize"> - </span></div>
+                        <div class="col"><label class="lbl grey">File Name:</label></div>
+                        <div class="col"><span class="fdata blue" id="fname"></span></div>
+                        <div class="col"><label class="lbl grey">File Size:</label></div>
+                        <div class="col"><span class="fdata blue" id="fsize"></span></div>                       
                         
                 </div>
                 <div class="row">
-                        <div class="col-sm-5"><label class="lbl grey">Status:</label> <span class="fdata blue" id="fstatus"> - </span></div>
-                        
-                        
+                        <div class="col"><label class="lbl grey">Status:</label></div>
+                        <div class="col"><span class="fdata blue" id="fstatus"></span></div>
+                        <div class="col"></div>
+                        <div class="col"></div>
                 </div>
                 
             
@@ -76,7 +83,7 @@
     <script type="text/javascript" src="./lib/jquery/jquery.min.js"></script>
 
     <!--bootstrap scripts-->
-    <script type="text/javascript" src="./lib/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./lib/bootstrap/bootstrap4.min.js"></script>
     <script type="text/javascript" src="./lib/bootstrap/popper.min.js"></script>
 
     <!--datatables scripts-->
@@ -84,7 +91,8 @@
     <script type="text/javascript" src="./lib/datatable/dataTables.bootstrap4.min.js"></script>
 
     <!--custom scripts-->
+    <script type="text/javascript" src="./lib/custom/bootstable.js"></script>
     <script type="text/javascript" src="./lib/custom/index.js"></script>
-
+    
 </body>
 </html>

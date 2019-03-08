@@ -115,6 +115,6 @@ function ProcessExcel(data) {
     dvExcel.appendChild(table);
    $('#myTable').DataTable();
    $("#fstatus").text("Uploaded");
-  
+   $('table').SetEditable();
     
 };
