@@ -113,7 +113,7 @@ function ProcessExcel(data) {
     var dvExcel = document.getElementById("dvExcel");
     dvExcel.innerHTML = "";
     dvExcel.appendChild(table);
-   $('#myTable').DataTable();
+   //$('#myTable').DataTable();
    $("#fstatus").text("Uploaded");
    $('table').SetEditable();
     

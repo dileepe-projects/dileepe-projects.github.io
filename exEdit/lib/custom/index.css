@@ -30,4 +30,11 @@
 th {
     background-color: #28a745;
     color: white;
+    padding: 8px;
+    line-height: 1.42857143;
+}
+
+td{
+    padding: 8px;
+    line-height: 1.42857143;
 }
