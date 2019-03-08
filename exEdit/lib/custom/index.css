@@ -5,6 +5,9 @@
 #fileUpload{
     display:none;
 }
+#search{
+    display: none;
+}
 
 #selectFile{
     cursor: pointer;

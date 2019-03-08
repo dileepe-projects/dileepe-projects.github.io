@@ -10,6 +10,8 @@ $(document).ready(function(){
             $("#fname").text(fileName);
             $("#fsize").text(fileSize + " Bytes");
             $("#fstatus").text("Not Uploaded");
+            $("#search").hide();
+            $("#searchOpt").empty();
 
             $("#selectFile").text("1 File Selected");
             $("#selectFile").attr('class', 'btn btn-success my-2 my-sm-0 spaced');
@@ -115,6 +117,48 @@ function ProcessExcel(data) {
     dvExcel.appendChild(table);
    //$('#myTable').DataTable();
    $("#fstatus").text("Uploaded");
+   //$("#search").show();
+   
    $('table').SetEditable();
+   
+   setSearchIndex(headerRows);
     
 };
+
+function setSearchIndex(searchOptions){  
+    
+    for(var i=0; i<searchOptions.length; i++)
+    {
+        $("#searchOpt").append("<option value='"+i+"'>"+searchOptions[i]+"</options>")
+      
+    }
+    $("#search").css("display","flex");
+
+}
+
+
+function searchTable(){    
+ 
+ var indx = $("#searchOpt").val();
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[indx];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+
+
+
+}
