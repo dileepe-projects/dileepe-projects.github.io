@@ -55,3 +55,7 @@ td{
 #saveTable{
     display: none;
 }
+
+div[data-notify = 'container']{
+    font-size: 13px;
+}

@@ -43,7 +43,45 @@ $(document).ready(function(){
         
         });
    
-
+        $('#modify').click(function(){
+            notifyme("", "Table", "Available For Editing", "warning");
+            $("#saveTable").show();
+            $("#cancel").show();
+            $("th[name='buttons']").hide();
+            $("td[name='buttons']").hide();
+            $('td').css("cursor","pointer");
+            $("#tableContents").attr('contenteditable', 'true');
+           });
+        
+           $("#saveTable").click(function(){
+            $("#tableContents").attr('contenteditable', 'false');
+            $("th[name='buttons']").show();
+            $("td[name='buttons']").show();
+            $('td').css("cursor","default");
+            $("#saveTable").hide();
+            $("#cancel").hide();
+            notifyme("", "Table", "Saved", "success");
+            
+        
+            if (typeof(Storage) !== "undefined") {
+                // Code for localStorage/sessionStorage.
+                localStorage.setItem("FileName",$("#fname").text());
+                localStorage.setItem("table", $("#dvExcel").html());
+              } else {
+                // Sorry! No Web Storage support..
+              }   
+           });
+           
+        
+           $("#cancel").click(function(){
+            $("#tableContents").attr('contenteditable', 'false');
+            $("th[name='buttons']").show();
+            $("td[name='buttons']").show();
+            $('td').css("cursor","default");
+            $("#saveTable").hide();
+            $("#cancel").hide();
+           });
+        
 
 
 
@@ -169,45 +207,7 @@ function ProcessExcel(data) {
    $("#download").removeAttr("disabled");
 
    
-   $('#modify').click(function(){
-    notifyme("", "Table", "Available For Editing", "warning");
-    $("#saveTable").show();
-    $("#cancel").show();
-    $("th[name='buttons']").hide();
-    $("td[name='buttons']").hide();
-    $('td').css("cursor","pointer");
-    $("#tableContents").attr('contenteditable', 'true');
-   });
-
-   $("#saveTable").click(function(){
-    $("#tableContents").attr('contenteditable', 'false');
-    $("th[name='buttons']").show();
-    $("td[name='buttons']").show();
-    $('td').css("cursor","default");
-    $("#saveTable").hide();
-    $("#cancel").hide();
-    notifyme("", "Table", "Saved", "success");
-    
-
-    if (typeof(Storage) !== "undefined") {
-        // Code for localStorage/sessionStorage.
-        localStorage.setItem("FileName",$("#fname").text());
-        localStorage.setItem("table", $("#dvExcel").html());
-      } else {
-        // Sorry! No Web Storage support..
-      }   
-   });
    
-
-   $("#cancel").click(function(){
-    $("#tableContents").attr('contenteditable', 'false');
-    $("th[name='buttons']").show();
-    $("td[name='buttons']").show();
-    $('td').css("cursor","default");
-    $("#saveTable").hide();
-    $("#cancel").hide();
-   });
-
    
    
 };
