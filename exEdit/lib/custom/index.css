@@ -1,3 +1,4 @@
+
 .spaced{
     margin-left:10px;
 }
@@ -40,4 +41,17 @@ th {
 td{
     padding: 8px;
     line-height: 1.42857143;
+}
+
+#modifyOptions{
+    display: none;
+    padding-top:10px;
+}
+
+#cancel{
+    display:none;
+}
+
+#saveTable{
+    display: none;
 }

@@ -23,7 +23,43 @@ $(document).ready(function(){
     $("#upload").click(function(){
         Upload();
     });
+
+    $("#download").click(function(){
+        var tableHtml = document.getElementById("myTable");
+        var updatedFileName = localStorage.getItem("FileName").split(".")[0] + "_" + Math.floor(Date.now() / 1000);
+        var fileExtension = localStorage.getItem("FileName").split(".")[1];
+        updatedFileName = updatedFileName + "." + fileExtension;
+      
+        var wb= XLSX.utils.table_to_book(tableHtml,{sheet:"sheet1"});
+        var wbout = XLSX.write(wb, {bookType:'xlsx', bookSST:true, type: 'binary'});
+        function s2ab(s) {
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+        }
+        saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), updatedFileName);
+        notifyme("", updatedFileName, "Downloaded", "success");
+        
+        });
+   
+
+
+
+
+        
 });
+
+function notifyme(theIcon,theTitle, theBody, msgType){
+    $.notify({
+        icon: theIcon,
+        title: "<strong>"+theTitle+": </strong> ",
+        message: theBody
+    },{
+        // settings
+        type: msgType
+    });
+}
 
 function Upload() {
     //Reference the FileUpload element.
@@ -96,6 +132,7 @@ function ProcessExcel(data) {
     }
 
     var tbody = document.createElement("tbody");
+    tbody.setAttribute("id","tableContents");
     table.appendChild(tbody);
     
     for (var j = 1; j < excelRows.length; j++) {
@@ -120,9 +157,59 @@ function ProcessExcel(data) {
    //$("#search").show();
    
    $('table').SetEditable();
+   localStorage.setItem("FileName",$("#fname").text());
+   localStorage.setItem("table", $("#dvExcel").html());
+
    
    setSearchIndex(headerRows);
+
+   
+   $("#modifyOptions").css("display","flex");
+
+   $("#download").removeAttr("disabled");
+
+   
+   $('#modify').click(function(){
+    notifyme("", "Table", "Available For Editing", "warning");
+    $("#saveTable").show();
+    $("#cancel").show();
+    $("th[name='buttons']").hide();
+    $("td[name='buttons']").hide();
+    $('td').css("cursor","pointer");
+    $("#tableContents").attr('contenteditable', 'true');
+   });
+
+   $("#saveTable").click(function(){
+    $("#tableContents").attr('contenteditable', 'false');
+    $("th[name='buttons']").show();
+    $("td[name='buttons']").show();
+    $('td').css("cursor","default");
+    $("#saveTable").hide();
+    $("#cancel").hide();
+    notifyme("", "Table", "Saved", "success");
     
+
+    if (typeof(Storage) !== "undefined") {
+        // Code for localStorage/sessionStorage.
+        localStorage.setItem("FileName",$("#fname").text());
+        localStorage.setItem("table", $("#dvExcel").html());
+      } else {
+        // Sorry! No Web Storage support..
+      }   
+   });
+   
+
+   $("#cancel").click(function(){
+    $("#tableContents").attr('contenteditable', 'false');
+    $("th[name='buttons']").show();
+    $("td[name='buttons']").show();
+    $('td').css("cursor","default");
+    $("#saveTable").hide();
+    $("#cancel").hide();
+   });
+
+   
+   
 };
 
 function setSearchIndex(searchOptions){  
@@ -133,6 +220,7 @@ function setSearchIndex(searchOptions){
       
     }
     $("#search").css("display","flex");
+   
 
 }
 
@@ -158,7 +246,11 @@ function searchTable(){
       }
     } 
   }
+}
 
 
-
+function exportTable(){
+   // var wb = XLSX.utils.table_to_book(localStorage.getItem("table"),{sheet:"sheet1"});
+   
+       
 }

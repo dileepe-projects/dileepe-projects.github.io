@@ -8,10 +8,6 @@
     <!--Bootstrap stylesheets-->
     <link rel="stylesheet" href="./lib/bootstrap/bootstrap4.min.css">
 
-    <!--Datatables stylesheets-->
-    <link rel="stylesheet" href="./lib/datatable/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="./lib/datatable/dataTables.bootstrap4.min.css">
-
      <!--fontawesome stylesheets-->
      <link rel="stylesheet" href="./lib/fontawesome/css/fontawesome.css">
      <link rel="stylesheet" href="./lib/fontawesome/css/all.css">
@@ -37,11 +33,9 @@
                                 </div>
                         </li>              
                         
+                       
                         <li class="nav-item">                                                                        
-                                <button class="btn btn-outline-primary my-2 my-sm-0 spaced" ><i class="fas fa-edit"></i> Modify</button>  
-                        </li>
-                        <li class="nav-item">                                                                        
-                                <button class="btn btn-outline-primary my-2 my-sm-0 spaced" ><i class="fas fa-file-download"></i> Download</button>  
+                                <button class="btn btn-outline-primary my-2 my-sm-0 spaced" id="download" disabled><i class="fas fa-file-download"></i> Download</button>  
                         </li>  
                                   
                 </ul>          
@@ -66,13 +60,21 @@
                         <div class="col"></div>
                 </div>
                 <div class="row" id="search">
-                   
+                    <div class="col-sm-3"><label class="lbl grey">Filter Options: </label></div>
                     <div class="col-sm-3">
                             <select class='form-control' id='searchOpt'></select>
                     </div>
-                      <div class="col-sm-3"><input class = "form-control" type="text" id="myInput" onkeyup="searchTable()" placeholder="Search"></div>
-                   
-            </div>
+                    <div class="col-sm-3"><input class = "form-control" type="text" id="myInput" onkeyup="searchTable()" placeholder="Search"></div>
+                     
+                 </div>
+                 <div class="row" id="modifyOptions">
+                        <div class="col-sm-3"><label class="lbl grey">Table Options: </label></div>
+                        <div class="col-sm-6">
+                                <button class="btn btn-outline-success my-2 my-sm-0 spaced" id="modify"><i class="fas fa-edit"></i> Edit</button>
+                                <button class="btn btn-outline-success my-2 my-sm-0 spaced" id="saveTable"><i class="fas fa-save"></i> Save</button>
+                                <button class="btn btn-outline-success my-2 my-sm-0 spaced" id="cancel"><i class="fas fa-times-circle"></i> Cancel</button>
+                           </div>
+                 </div>
                 
             
         </div>
@@ -84,6 +86,7 @@
         <div id="dvExcel">
               
         </div>
+        
     </div>
     
     
@@ -100,10 +103,10 @@
     <!--bootstrap scripts-->
     <script type="text/javascript" src="./lib/bootstrap/bootstrap4.min.js"></script>
     <script type="text/javascript" src="./lib/bootstrap/popper.min.js"></script>
+    <script type="text/javascript" src="./lib/bootstrap/bootstrap-notify.js"></script>
 
-    <!--datatables scripts-->
-    <script type="text/javascript" src="./lib/datatable/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="./lib/datatable/dataTables.bootstrap4.min.js"></script>
+    <!--file saver-->
+    <script type="text/javascript" src="./lib/filesaver/FileSaver.js"></script>
 
     <!--custom scripts-->
     <script type="text/javascript" src="./lib/custom/bootstable.js"></script>
