@@ -1,4 +1,4 @@
-# Dileep HTML/CSS/JS Projects
+# HTML/CSS/JS Projects
 
 
 Exp No | Title | About | Last Updated
