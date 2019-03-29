@@ -10,4 +10,4 @@ Exp No | Title | About | Last Updated
 5 | [ExEdit](https://dileepe-projects.github.io/exEdit) | SheetJS,FileSaver,JQUERY,BOOTSTRAP - edit excel files | Mar 11 2019
 6 | [TIC-TAC_TOE](https://dileepe-projects.github.io/tic-tac-toe) | Game Using JQUERY,BOOTSTRAP,HTML5 Session Storage | Mar 30 2019
 
-*New Work in progress...last updated 03/30/2019*
+*...last updated 03/30/2019*
