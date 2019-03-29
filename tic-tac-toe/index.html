@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic-Tac-Toe</title>
+    <!--Bootstrap stylesheets-->
+    <link rel="stylesheet" href="./lib/bootstrap/bootstrap4.min.css">
+    <!--custom stylesheets-->
+    <link rel="stylesheet" href="./lib/custom/game.css";
+</head>
+<body>
+
+    <div class="container" id="gameArea" align="center" style="padding:10px; display:none;">
+           <label class="lbl">Current Turn: </label> <span id="currentPlayer"></span> as <span id="currentSymbol"></span>
+
+    <!-- Button trigger modal 
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#playerOptions">
+        Launch demo modal
+      </button>-->
+
+      <table>
+          <tr>
+                <td completed="false"> </td>
+                <td completed="false"> </td>
+                <td completed="false"> </td>
+          </tr>
+          <tr>
+                        <td completed="false"> </td>
+                        <td completed="false"> </td>
+                        <td completed="false"> </td>
+          </tr>
+          <tr> 
+                <td completed="false"> </td>
+                <td completed="false"> </td>
+                <td completed="false"> </td>
+          </tr>
+
+      </table>
+    </div>
+      <!-- Modal -->
+      <div class="modal fade" id="playerOptions" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="playerOptionsLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="playerOptionsLabel">Tic-Tac-Toe</h5>             
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                        <label class="lbl">Game Setup</label> <span>- Rename Players</span>
+                        <div class="row">
+                                <div class="col-sm">
+                                        <div id="player1" contenteditable="true" style="cursor: pointer">Player 1</div>
+                                </div>
+                                as
+                                <div class="col-sm">
+                                        <label class="lbl red"> X </label>
+                                </div>
+                              
+                        </div>
+                        <div class="row">
+                                <div class="col-sm">
+                                        <div id="player2" contenteditable="true" style="cursor: pointer">Player 2</div>
+                                </div>
+                                as
+                                <div class="col-sm">
+                                        <label class="lbl green"> O </label>
+                                </div>
+                               
+                        </div>                     
+                </div>
+            </div>
+            <div class="modal-footer">
+                  
+              
+              <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+              <button type="button" id="start" class="btn btn-primary">Start</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!--jquery script-->
+<script type="text/javascript" src="./lib/jquery/jquery.min.js"></script>
+
+<!--bootstrap scripts-->
+<script type="text/javascript" src="./lib/bootstrap/bootstrap4.min.js"></script>
+<script type="text/javascript" src="./lib/bootstrap/popper.min.js"></script>
+<script type="text/javascript" src="./lib/bootstrap/bootstrap-notify.js"></script>
+
+<!--custom scripts-->
+<script src="./lib/custom/game.js"></script>
+    
+</body>
+</html>
