@@ -13,28 +13,30 @@
 <body>
 
     <div class="container" id="gameArea" align="center" style="padding:10px; display:none;">
-           <label class="lbl">Current Turn: </label> <span id="currentPlayer"></span> as <span id="currentSymbol"></span>
+           <game status="ongoing" style="display: none;"></game>
+           <div id="playDiv"><label class="lbl">Current Turn: </label> <span id="currentPlayer" opp=""></span> as <span id="currentSymbol"></span></div>
+           <div id="winDiv" style="display:none;"><label class="lbl">Winner: </label> <span id="winner"></span> </div>
 
     <!-- Button trigger modal 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#playerOptions">
         Launch demo modal
       </button>-->
 
-      <table>
+      <table id="gameTable">
           <tr>
-                <td completed="false"> </td>
-                <td completed="false"> </td>
-                <td completed="false"> </td>
+                <td id="1" completed="false"></td>
+                <td id="2" completed="false"></td>
+                <td id="3" completed="false"></td>
           </tr>
           <tr>
-                        <td completed="false"> </td>
-                        <td completed="false"> </td>
-                        <td completed="false"> </td>
+                        <td id="4" completed="false"></td>
+                        <td id="5" completed="false"></td>
+                        <td id="6" completed="false"></td>
           </tr>
           <tr> 
-                <td completed="false"> </td>
-                <td completed="false"> </td>
-                <td completed="false"> </td>
+                <td id="7" completed="false"></td>
+                <td id="8" completed="false"></td>
+                <td id="9" completed="false"></td>
           </tr>
 
       </table>
