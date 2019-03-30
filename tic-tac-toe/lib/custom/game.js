@@ -140,7 +140,7 @@ function checkHorizontal(){
              $("#winner").text($("#currentPlayer").attr("opp"));
              $("td").unbind(); //remove click event
              $("#playDiv").hide();
-             $("#winDiv").hide();
+             $("#winDiv").show();
              return true;
         }
         else{}
