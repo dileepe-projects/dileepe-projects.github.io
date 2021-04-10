@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Phone Directory</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="margin20 textCenter fs20">Phone Directory</div>
+    <div class="textCenter">
+            <div class="textCenter inputContent">
+                <div class="txtLeft marginTB40 fb">
+                    <div class="txtLeft">
+                        <input type = "text" id = "name" value="" placeholder="Contact Name"/>
+                        <input type = "number" maxlength = "10" id = "mobile" value="" placeholder="Mobile Number"/>
+                        <input type = "email" id = "email" value="" placeholder="Email"/>
+                        <input type = "submit" class = "btn" id = "submit" value="Add Contact"/>
+                        <div id="error" class = "dn error padT10 textCenter">Invalid Input!</div>
+                    </div>    
+                </div>
+
+            </div>
+            <div class="marginT40">
+                <span>Search contact by Mobile No:</span>
+                <input type="text" id="search" value=""/>
+                </div>
+        <div class="marginT40 padL10 tab cursorPtr" id="contactsSummary">Contacts Summary</div>
+        <div id="contactSummary" class = "contactSummary">
+            <table id="summaryTable">
+                <thead>
+                    <tr>
+                        <th id="nameColumn">Name</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Admin</td>
+                        <td>9999999999</td>
+                        <td>admin@xyzcompany.com</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="noResult" class="noResult dn">No Results Found</div>
+        </div>
+    </div>
+    <script>
+        window.contactsList = [{
+            name: 'Admin',
+            mobile: '9999999999',
+            email: 'admin@xyzcompany.com'
+        }];
+    </script>
+        <script src="./js/script.js"></script>
+    </body>
+</html>
