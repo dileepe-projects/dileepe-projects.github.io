@@ -138,6 +138,7 @@ input = document.getElementById("search");
         counter = counter + 1;
       } else {
         tr[i].style.display = "none";
+        document.getElementById("summaryTable").deleteRow(i);
       }
     }
   }
